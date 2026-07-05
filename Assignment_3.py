@@ -84,16 +84,6 @@ class SLL:
         else: 
             print("An unexpected error occured. Please! try again with valid input values.")
 
-    
-    #In class SLL, implement iterator for SLL to access all the elements of the list in a sequence.
-    def iterator(self, elem):
-        self.elem = elem
-        temp = self.start
-        while temp.item == self.elem:
-            temp = temp.next
-        return temp
-
-
     #In class SLL, define a method delete_first to delete first element from the list.
     def delete_first(self):
         if self.is_empty() == None:
@@ -146,6 +136,23 @@ class SLL:
 
         else: 
             print("An unexpected error occured. Please! try again with valid input values.")
+
+     #In class SLL, implement iterator for SLL to access all the elements of the list in a sequence.
+
+    def iterator(self):     #we create an iterator function
+        return SLLiterable(self.start)
+    
+class SLLiterable:          #we create a separate iterable class
+    def __init__(self, start):
+        self.current = start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data = self.current.item
+        self.current = self.current.next
+        return data
 #driver code
 mylist = SLL()
 mylist.node(10)
@@ -153,8 +160,9 @@ mylist.insert_at_start(20)
 mylist.insert_at_last(50)
 mylist.insert_after(90, mylist.search(50))
 mylist.show()
+for x in mylist:
+    print(x, end=' ')
 print(mylist.iterator(90))
 mylist.delete_item(90)
 mylist.delete_first()
 mylist.delete_last()
-
