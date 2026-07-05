@@ -13,14 +13,13 @@ class CDLL:
     
     #Define a method is _empty() to check if the linked list is empty in CDLL class.
     def is_empty(self):
-        if self.last == None:
-            return None
+        return self.last == None #will return true and false based on the conditions 
     
     #In class CDLL, define a method insert_at_start to insert an element at the starting of the list.
     def insert_at_start(self, elem):
         self.elem = elem
         n = Node(None, self.elem)
-        if self.is_empty() == None:
+        if self.is_empty():
             j = Node()
             self.last = j
             j.next = n
@@ -36,7 +35,7 @@ class CDLL:
     def insert_at_last(self, elem):
         self.elem = elem
         n = Node(None, self.elem)
-        if self.is_empty() == None:
+        if self.is_empty():
             self.last = n
         
         else: 
