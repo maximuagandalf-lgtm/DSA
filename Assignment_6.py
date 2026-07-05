@@ -89,6 +89,31 @@ class CDLL:
     #In class CDLL, implement iterator for CDLL to access all the elements of the list in a sequence.
     def __iter__(self):
         return CDLL_iterable(self.last)
+    
+    #In class CDLL, define a method delete _first() to delete first element from the list.
+    def delete_first(self):
+        self.last.next = self.last.next.next
+        self.last.next.next.prev = self.last
+        self.last.next = self.last.next.prev = None
+    
+    #In class CDLL, define a method delete_last() to delete last element from the list.
+    def delete_last(self):
+        self.last.prev.next = self.last.next
+        self.last.next.prev = self.last.prev
+        self.last = self.last.prev
+
+    #In class CDLL, define a method delete_item() to delete specified element from the list.
+    def delete_item(self, elem):
+        self.elem = elem
+        s = self.search(self.elem)
+        if s.next == self.last.next:
+            self.delete_last()
+        elif s.data == self.last.next.data:
+            self.delete_first()
+        else: 
+            s.next.prev = s.prev
+            s.prev.next = s.next
+            s.next = s.prev = None
 
 class CDLL_iterable:
     def __init__(self, last):
