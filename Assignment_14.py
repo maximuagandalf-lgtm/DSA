@@ -23,7 +23,7 @@ class Queue:
     #In Queue class, define enqueue() method to add data at the rear end of the queue.
     def enqueue(self, data):
         self.mylist.insert_at_last(data)
-        print(f'The updated list is: {self.mylist}')
+        print(f'The updated Queue is: {self.mylist.show()}')
         self.set()
         self.item_count += 1
     
@@ -31,7 +31,7 @@ class Queue:
     def dequeue(self):
         self.mylist.delete_at_start()
         print("The removed element is: ", self.mylist.data)
-        print(f'The updated list is: {self.mylist}')
+        print(f'The updated list is: {self.mylist.show()}')
         self.set()
         self.item_count -= 1
 
