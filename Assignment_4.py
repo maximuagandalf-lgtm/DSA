@@ -26,14 +26,14 @@ class DLL:
         if self.is_empty() == None: 
             n = node(None, self.elem)
             self.start = n
-            n.prev = self.start
+            n.prev = None
             print("The node inserted is: ", n)
             
         elif self.is_empty() != None:
             n = node(None, self.elem)
             n.next = self.start
             self.start = n
-            n.prev = self.start
+            n.prev = None
             print("The node inserted is: ", n)
     
     #In class DLL, define a method insert_at_last() to insert an element at the end of the list.
