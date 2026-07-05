@@ -1,25 +1,9 @@
-#Define a class Node to describe a Node of Singly linked list. 
-class node: 
-    def __init__(self, start, item, next):
-        self.item = item
-        self.next = next
-
-# Define a class SLL to implement Singly Linked List with __init__() method and initialise start reference variable.
-
 class SLL:
-    def __init__(self, start = None):
-        self.start = start
-
-    def node(self, item, next):
-        self.item = item
-        self.node = node
-
-#Define a method is_empty) to check if the linked list is empty in SLL class.
-
-class SLL:
+    # Define a class SLL to implement Singly Linked List with __init__() method and initialise start reference variable.
     def __init__(self, start):
         self.start = start
 
+    #Define a class Node to describe a Node of Singly linked list. 
     def node(self, item, next = None):
         self.item = item
         self.next = next
@@ -32,17 +16,17 @@ class SLL:
     #In class SLL, define a method insert _at_start to insert an element at the start of the list.
     def insert_at_start(self, firstnew_node_item, id):
         if self.is_empty() != None:
-            n = node(10, self.start)  #first we have to create the next node and we store the address of next node in "next" from "start"
+            n = self.node(10, self.start)  #first we have to create the next node and we store the address of next node in "next" from "start"
             self.start = n #now hum n ke andar jo node hai uski value ko start mein store karenge.
         
         elif self.is_empty() == None:
-            n = node(10)
+            n = self.node(10)
             self.start = n
     
     #In class SLL, define a method insert _at_last) to insert an element at the end of the list.
     def insert_at_last(self, new_item):
         self.new_item = new_item
-        n = node(self.new_item)
+        n = self.node(self.new_item)
         if self.is_empty() == None: 
             self.start = n
         
@@ -75,7 +59,7 @@ class SLL:
     def insert_after(self, data = None, elem = None):
         self.data = data
         self.elem = elem
-        n = node(self.data, self.next)
+        n = self.node(self.data, self.next)
         if self.is_empty() == None:
             self.start = n
         
@@ -164,6 +148,13 @@ class SLL:
             print("An unexpected error occured. Please! try again with valid input values.")
 #driver code
 mylist = SLL()
-mylist.show(100)
-
+mylist.node(10)
+mylist.insert_at_start(20)
+mylist.insert_at_last(50)
+mylist.insert_after(90, mylist.search(50))
+mylist.show()
+print(mylist.iterator(90))
+mylist.delete_item(90)
+mylist.delete_first()
+mylist.delete_last()
 
