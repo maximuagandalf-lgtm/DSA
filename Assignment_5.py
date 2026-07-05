@@ -55,3 +55,67 @@ class CLL:
             else:
                 n.next = s.next
                 s.next = n
+    
+    #In class CLL, define a method to print all the elements of the list.
+    def show(self):
+        temp = self.last.next
+        while temp != self.last:
+            print(temp)
+            temp = temp.next
+    
+    #In class CLL, define a method delete_first() to delete first element from the list.
+    def delete_first(self):
+        temp = self.last.next
+        self.last.next = temp.next
+        temp.next = None
+    
+    #In class CLL, define a method delete_last() to delete last element from the list.
+    def delete_last(self):
+        temp = self.last.next
+        while temp.next != temp:
+            temp = temp.next
+        temp.next = temp
+    
+    #In class CLL, define a method delete_item() to delete specified element from the list.
+    def delete_item(self, elem):
+        self.elem = elem 
+        s = self.search(self.elem)
+        temp = self.last 
+        while temp.next != s.next:
+            temp = temp.next
+        temp.next = s.next
+        s.next == None
+    
+    #In class CLL, implement iterator for CLL to access all the elements of the list in a sequence.
+    def __iter__(self):
+        return CLL_iterable(self.last)
+
+class CLL_iterable:
+    def __init__(self, start):
+        self.current = start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data = self.current.item
+        self.current = self.current.next
+        return data
+    
+#driver code
+CLL1 = CLL(1000)
+try_node = node(10, 10000)
+CLL1.is_empty()
+CLL1.insert_at_start(5)
+CLL1.insert_at_last(15)
+CLL1.insert_after(15, 20)
+CLL1.search(10)
+CLL1.show()
+CLL1.delete_first()
+CLL1.show()
+CLL1.delete_last()
+CLL1.show()
+CLL1.delete_item(10)
+CLL1.show()
+for x in CLL1:
+    print(x, end = " ")
