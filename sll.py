@@ -11,8 +11,7 @@ class SLL:
         return self.start == None
     
     def insert_at_start(self, data):
-        self.data = data
-        n = Node(self.data)
+        n = Node(data)
         if self.is_empty():
             self.start = n
             n.next = None
@@ -21,11 +20,20 @@ class SLL:
             n.next = self.start
             self.start = n
     
+    def insert_at_last(self, data):
+        if self.is_empty():
+            self.insert_at_start(data)
+        else:
+            n = Node(data)
+            temp = self.start
+            while temp.next != None:
+                temp = temp.next
+            temp.next = n
+
     def delete_at_start(self):
         if self.is_empty():
-            raise IndexError("Stack Under Flow")
+            raise IndexError("Data structure Underflow")
         
         else:
-            data = self.start.data
+            self.data = self.start.data
             self.start = self.start.next
-            print("The removed element is: ", data)
