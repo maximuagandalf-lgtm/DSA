@@ -29,4 +29,17 @@ class graph:
 
 #driver_code
 g1 = graph(5)
+g1.add_edge(0,1)
+g1.add_edge(1,2)
+g1.add_edge(1,3)
+g1.add_edge(2,3)
+g1.add_edge(3,4)
+
 g1.print_adj_matrix()
+
+g1.remove_edge(2,3)
+
+g1.print_adj_matrix()
+
+print(g1.has_edge(3,4))
+print(g1.has_edge(2,3))
