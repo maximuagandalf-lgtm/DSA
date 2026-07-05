@@ -37,3 +37,9 @@ class SLL:
         else:
             self.data = self.start.data
             self.start = self.start.next
+    
+    def show(self):
+        temp = self.start
+        while temp.next != None:
+            temp = temp.next
+            return temp 
